@@ -684,6 +684,8 @@ footer {
     box-shadow: var(--shadow-sm);
 }
     </style>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#fb2651">
 </head>
 <body class="dark-mode">
     <header>
@@ -1521,6 +1523,11 @@ HTMLCanvasElement.prototype.toDataURL = function (...args) {
         const privacy = search.get('privacy');
         if (privacy) {
             loadPrivacy();
+        }
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js");
         }
     </script>
 </body>

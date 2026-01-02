@@ -39,6 +39,8 @@
     <meta name="twitter:title" content="GN-Math">
     <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#fb2651">
 </head>
 <body class="dark-mode">
     <header>
@@ -142,6 +144,11 @@
         const privacy = search.get('privacy');
         if (privacy) {
             loadPrivacy();
+        }
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js");
         }
     </script>
 </body>
