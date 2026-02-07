@@ -1,141 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+  <head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
     <script>
-        window.addEventListener('beforeunload', function (event) {
-            event.preventDefault();
-            event.returnValue = '';
-            return 'Are you sure you want to leave? Any unsaved changes will be lost.';
-        });
+      window.addEventListener('beforeunload', function (event) {
+        event.preventDefault()
+        event.returnValue = ''
+        return 'Are you sure you want to leave? Any unsaved changes will be lost.'
+      })
     </script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WX5VS54ZDW"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || []
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-WX5VS54ZDW');
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-WX5VS54ZDW')
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gn-math</title>
-    <meta name="title" content="GN-Math">
-    <meta name="description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gn-math.github.io/">
-    <meta property="og:title" content="GN-Math">
-    <meta property="og:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://gn-math.github.io/">
-    <meta name="twitter:title" content="GN-Math">
-    <meta name="twitter:description" content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#fb2651">
-</head>
-<body class="dark-mode">
+    <meta name="title" content="GN-Math" />
+    <meta
+      name="description"
+      content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gn-math.github.io/" />
+    <meta property="og:title" content="GN-Math" />
+    <meta
+      property="og:description"
+      content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://gn-math.github.io/" />
+    <meta name="twitter:title" content="GN-Math" />
+    <meta
+      name="twitter:description"
+      content="Play unbl*cked games like Crazy Cattle 3D and DriveMad on GN-Math. Fast, free, no downloads—perfect for school or home."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#fb2651" />
+  </head>
+  <body class="dark-mode">
     <header>
-        <div class="header-content">
-            <div class="logo">gn-math</div>
-            <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search zones..." oninput="filterZones()">
-                <select id="sortOptions" onchange="sortZones()">
-                    <option value="name">Name</option>
-                    <option value="id">ID (Date)</option>
-                    <option value="popular">Popular</option>
-                </select>
-                <select id="filterOptions" onchange="filterZones2()">
-                    <option value="none">(SELECT TAG)</option>
-                </select>
-            </div>
-            <div class="control-buttons">
-                <button id="refresh" class="control-button" title="Refresh all the zones" onclick="listZones()">
-                    <img src="refresh-icon.png" alt="refresh">
-                </button>
-
-                <button id="settings" class="control-button" title="Settings!">
-                    <img src="setting.png" alt="settings">
-                </button>
-            </div>
+      <div class="header-content">
+        <div class="logo">gn-math</div>
+        <div class="search-container">
+          <input type="text" id="searchBar" placeholder="Search zones..." oninput="filterZones()" />
+          <select id="sortOptions" onchange="sortZones()">
+            <option value="name">Name</option>
+            <option value="id">ID (Date)</option>
+            <option value="popular">Popular</option>
+          </select>
+          <select id="filterOptions" onchange="filterZones2()">
+            <option value="none">(SELECT TAG)</option>
+          </select>
         </div>
+        <div class="control-buttons">
+          <button id="refresh" class="control-button" title="Refresh all the zones" onclick="listZones()">
+            <img src="refresh-icon.png" alt="refresh" />
+          </button>
+          <button id="settings" class="control-button" title="Settings!">
+            <img src="setting.png" alt="settings" />
+          </button>
+        </div>
+      </div>
     </header>
-	<main>
-    <div style="height:90px; position:sticky;">
-</div>
-    <br>
-        <details id="featuredZonesWrapper" open>
-            <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</summary>
-            <div id="featuredZones" class="zone-container"></div>
-        </details>
-        <br><hr><br>
-        <details id="allZonesWrapper" open>
-            <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</summary>
-            <div id="container">Loading...</div>
-        </details>
+    <main>
+      <div id="adsterraBanner" style="height: 90px; position: sticky"></div>
+      <br />
+      <details id="featuredZonesWrapper" open>
+        <summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer">
+          Featured Zones
+        </summary>
+        <div id="featuredZones" class="zone-container"></div>
+      </details>
+      <br />
+      <hr />
+      <br />
+      <details id="allZonesWrapper" open>
+        <summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer">All Zones</summary>
+        <div id="container">Loading...</div>
+      </details>
     </main>
 
-     <div id="zoneViewer">
-        <div class="zone-header">
-            <div class="zone-title">
-                <h2 id="zoneName">zone</h2>
-                <button class="info-button" onclick="showZoneInfo()" title="Zone Information">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                </button>
-                <span id="zoneId" style="display: none;"></span>
-                <a id="zoneAuthor" href="#" target="_blank">by Author</a>
-            </div>
-            <div class="zone-controls">
-                <button onclick="fullscreenZone()">Fullscreen</button>
-                <button onclick="aboutBlank()">Open in New Tab</button>
-                <button onclick="downloadZone()">Download</button>
-                <button onclick="closeZone()">Close</button>
-            </div>
+    <div id="zoneViewer">
+      <div class="zone-header">
+        <div class="zone-title">
+          <h2 id="zoneName">zone</h2>
+          <button class="info-button" onclick="showZoneInfo()" title="Zone Information">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </button>
+          <span id="zoneId" style="display: none"></span>
+          <a id="zoneAuthor" href="#" target="_blank">by Author</a>
         </div>
-        <iframe id="zoneFrame"></iframe>
+        <div class="zone-controls">
+          <button onclick="fullscreenZone()">Fullscreen</button>
+          <button onclick="aboutBlank()">Open in New Tab</button>
+          <button onclick="downloadZone()">Download</button>
+          <button onclick="closeZone()">Close</button>
+        </div>
+      </div>
+      <iframe id="zoneFrame"></iframe>
     </div>
 
     <div id="popupOverlay">
-        <div class="popup">
-            <div class="popup-header">
-                <h3 id="popupTitle">Title</h3>
-                <button id="popupClose" onclick="closePopup()">×</button>
-            </div>
-            <div id="popupBody">
-                Content will be here
-            </div>
+      <div class="popup">
+        <div class="popup-header">
+          <h3 id="popupTitle">Title</h3>
+          <button id="popupClose" onclick="closePopup()">×</button>
         </div>
+        <div id="popupBody">Content will be here</div>
+      </div>
     </div>
-    <div class="footer-links">
-            <a href="#" onclick="loadDMCA(); return false;">DMCA</a>
-            <a href="#" onclick="showContact(); return false;">Contact</a>
-            <a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</a>
-            <a href="javascript:saveData()">Export Data</a>
-            <a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</a>
-            <input type="file" id="importData" style="display: none;" onchange="loadData(event)">
-        </div>
+    <footer>
+      <div class="footer-links">
+        <a
+          href="#"
+          onclick="
+            loadDMCA()
+            return false
+          "
+          >DMCA</a
+        >
+        <a
+          href="#"
+          onclick="
+            showContact()
+            return false
+          "
+          >Contact</a
+        >
+        <a
+          href="#"
+          onclick="
+            loadPrivacy()
+            return false
+          "
+          >Privacy Policy</a
+        >
+        <a href="javascript:saveData()">Export Data</a>
+        <a
+          href="#"
+          onclick="
+            document.getElementById('importData').click()
+            return false
+          "
+          >Import Data</a
+        >
+        <input type="file" id="importData" style="display: none" onchange="loadData(event)" />
+      </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        try {
-        const search = new URLSearchParams(window.location.search);
-        const privacy = search.get('privacy');
-        if (privacy) {
-            loadPrivacy();
-        }
-        } catch(error){}
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          var bannerHost = document.getElementById('adsterraBanner')
+          if (!bannerHost) {
+            return
+          }
+          while (bannerHost.firstChild) {
+            bannerHost.removeChild(bannerHost.firstChild)
+          }
+          window.atOptions = {
+            key: 'd147d9e23a99cb2638410dd0158cd2a2',
+            format: 'iframe',
+            height: 90,
+            width: 728,
+            params: {},
+          }
+          var invokeScript = document.createElement('script')
+          invokeScript.src = 'https://www.highperformanceformat.com/d147d9e23a99cb2638410dd0158cd2a2/invoke.js'
+          bannerHost.appendChild(invokeScript)
+        }, 2000)
+      })
     </script>
     <script>
-        navigator.serviceWorker.register(location.protocol+"//"+location.hostname+"/sw.js");
+      try {
+        const search = new URLSearchParams(window.location.search)
+        const privacy = search.get('privacy')
+        if (privacy) {
+          loadPrivacy()
+        }
+      } catch (error) {}
     </script>
-</body>
+    <script>
+      navigator.serviceWorker.register(location.protocol + '//' + location.hostname + '/sw.js')
+    </script>
+  </body>
 </html>
